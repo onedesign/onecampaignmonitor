@@ -4,7 +4,7 @@ Craft CMS Plugin for Campaign Monitor Integration
 
 ## Subscribing to a list
 
-Add subscriptions to a list using either the OneCampaignMonitor service or variable.
+Add subscriptions to a list using either a POST route, the OneCampaignMonitor service, or variable.
 
 Adding subscriptions requires a List ID and an email, but there are a few other fields you can send:
 
@@ -13,6 +13,38 @@ Adding subscriptions requires a List ID and an email, but there are a few other 
 * name
 * array of custom fields (eg `{age: 22}`)
 * boolean for whether to resubscribe addresses that have previously been removed (default true)
+
+### POSTing a form
+
+The easiest way to add subscribers is by posting a form with their data. This follows the standard Craft form template, with some required and some optional fields.
+
+```
+<form method="POST" action="">
+  <!-- craft form fields -->
+  {{ getCsrfInput() }}
+  <input type="hidden" name="action" value="oneCampaignMonitor/subscribers/add" />
+  <input type="hidden" name="redirect" value="/" />
+
+  <!-- required fields -->
+  <input type="hidden" name="listId" value="myListId" />
+  <label for="email">Email (required)</label>
+  <input type="text" id="email" name="email" />
+
+  <!-- optional fields -->
+  <input type="hidden" name="resubscribe" value="0" /><!-- don't resubscribe if email has already opted out -->
+
+  <label for="name">Name</label>
+  <input type="text" id="name" name="name" />
+
+  <label for="customFields[myCustomField]">My Custom Field</label>
+  <input type="text" id="customFields[myCustomField]" name="customFields[myCustomField]" />
+
+  <label for="customFields[myOtherCustomField]">My Other Custom Field</label>
+  <input type="text" id="customFields[myOtherCustomField]" name="customFields[myOtherCustomField]" />
+
+  <input type="submit" value="Subscribe!" />
+</form>
+```
 
 ### Resposes
 
