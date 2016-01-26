@@ -1,8 +1,6 @@
 <?php
 namespace Craft;
 
-require_once __DIR__ . '/vendor/campaignmonitor/createsend-php/csrest_campaigns.php';
-
 class OneCampaignMonitorPlugin extends BasePlugin {
 
     public function getName() {
