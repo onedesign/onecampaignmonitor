@@ -1,6 +1,7 @@
 <?php
 namespace Craft;
 
+require_once __DIR__ . '/vendor/campaignmonitor/createsend-php/csrest_campaigns.php';
 
 class OneCampaignMonitorPlugin extends BasePlugin {
 
@@ -30,5 +31,15 @@ class OneCampaignMonitorPlugin extends BasePlugin {
 
     public function registerSiteRoutes() { return []; }
 
-    protected function defineSettings() { return []; }
+    protected function defineSettings() {
+        return array(
+            'campaignmonitor_api_key' => array(AttributeType::String)
+        );
+    }
+
+    public function getSettingsHtml() {
+        return craft()->templates->render('onecampaignmonitor/settings', array(
+            'settings' => $this->getSettings()
+        ));
+    }
 }
