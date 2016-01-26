@@ -1,0 +1,38 @@
+{
+    "name": "campaignmonitor/createsend-php",
+    "type": "library",
+    "description": "A php library which implements the complete functionality of the Campaign Monitor API.",
+    "keywords": ["campaign", "monitor", "api"],
+    "homepage": "http://campaignmonitor.github.io/createsend-php/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Toby Brain",
+            "email": "tobio85@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "require-dev": {
+        "lastcraft/simpletest": "~1.1"
+    },
+    "autoload": {
+        "classmap": [
+            "csrest_administrators.php",
+            "csrest_campaigns.php",
+            "csrest_clients.php",
+            "csrest_general.php",
+            "csrest_lists.php",
+            "csrest_people.php",
+            "csrest_segments.php",
+            "csrest_subscribers.php",
+            "csrest_templates.php",
+            "csrest_transactional_classicemail.php",
+            "csrest_transactional_smartemail.php",
+            "csrest_transactional_timeline.php"
+
+        ]
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "name": "onedesign/onecampaignmonitor",
+    "description": "A Craft CMS plugin for integrating Craft with CampaignMonitor",
+    "homepage": "https://github.com/onedesign/onecampaignmonitor",
+    "type": "craft-plugin",
+    "keywords": ["craft","plugin"],
+    "license": "MIT",
+    "authors": [{
+        "name": "One Design Company",
+        "email": "dev+onecampaignmonitor@onedesigncompany.com",
+        "homepage": "https://onedesigncompany.com"
+    }],
+    "autoload": {
+        "classmap": [
+            "controllers",
+            "services"
+        ]
+    },
+    "require": {
+        "composer/installers": "~1.0",
+        "campaignmonitor/createsend-php": "5.0.1"
+    }
+}
