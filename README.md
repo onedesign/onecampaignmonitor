@@ -14,6 +14,8 @@ Adding subscriptions requires a List ID and an email, but there are a few other 
 * array of custom fields (eg `{age: 22}`)
 * boolean for whether to resubscribe addresses that have previously been removed (default true)
 
+Note about the **list ID**: this is _not_ the parameter "listID" in the URL when viewing a list. Annoyingly, Campaign Monitor uses two IDs for lists. To find your List ID, view [this FAQ](https://createform.com/support/campaignmonitor-list).
+
 ### POSTing a form
 
 The easiest way to add subscribers is by posting a form with their data. This follows the standard Craft form template, with some required and some optional fields.
