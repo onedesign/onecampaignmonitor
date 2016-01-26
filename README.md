@@ -94,6 +94,4 @@ craft()->oneCampaignMonitor_subscribers->add($list_id, $email, $name, $customFie
 
 ## A note on blocking calls
 
-As of right now, all calls to CampaignMonitor are _blocking_, aka _synchronous_. This means that Craft will not render any template or continue executing code until the call is complete.
-
-For best practice, make these calls asynchronously using AJAX, or #TODO add a non-blocking method.
+It looks like the library this depends on, `createsend-php`, executes these CURL requests using sockets when available. (See `vendor/campaignmonitor/createsend-php/class/transport.php`.) If that's the case, then all CURL requests are performed asyncronously. Consider this a TODO to investigate and update responses.
