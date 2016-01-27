@@ -23,13 +23,13 @@ class OneCampaignMonitor_BaseService extends BaseApplicationComponent {
         return $data;
     }
 
-    protected function response($result, $errorMessage = null) {
+    protected function response($result, &$error) {
         if ($result->was_successful()) {
+            $error = null;
             return true;
         } else {
-            $error = "{$result->response->Code}: {$result->response->Message}";
-            $message = ($errorMessage ?: 'Error') . ': ' . $error;
-            OneCampaignMonitorPlugin::log($message, LogLevel::Error);
+            $error = $result->response->Message;
+            OneCampaignMonitorPlugin::log($error, LogLevel::Error);
             return false;
         }
     }
