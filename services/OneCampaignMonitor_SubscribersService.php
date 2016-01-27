@@ -1,7 +1,7 @@
 <?php
 namespace Craft;
 
-require_once CRAFT_BASE_PATH . '/vendor/campaignmonitor/createsend-php/csrest_subscribers.php';
+require_once CRAFT_BASE_PATH . '../vendor/campaignmonitor/createsend-php/csrest_subscribers.php';
 
 class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseService {
 
