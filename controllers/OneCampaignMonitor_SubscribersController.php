@@ -17,17 +17,21 @@ class Onecampaignmonitor_SubscribersController extends BaseController
         $customFields = craft()->request->getParam('customFields') ?: array();
         $resubscribe = craft()->request->getParam('resubscribe') ?: true;
 
-
-        //validate and send
-        if ($listId && $email) {
-            if (!craft()->oneCampaignMonitor_subscribers->add($listId, $email, $name, $customFields, $resubscribe)) {
-                throw new HttpException(400);
-            }
-        } else {
-            throw new HttpException(400);
+        $error = null;
+        try {
+            craft()->oneCampaignMonitor_subscribers->add($listId, $email, $name, $customFields, $resubscribe);
+        } catch (Exception $e) {
+            $error = $e->getMessage();
         }
 
-        //success! redirect to posted redirect url
-        $this->redirectToPostedUrl();
+        //return json for ajax requests, redirect to posted url otherwise
+        if (craft()->request->isAjaxRequest()) {
+            $this->returnJson(['success' => is_null($error),
+                               'error' => $error]);
+        } else {
+            craft()->userSession->setFlash('oneCampaignMonitor_addSubscriberSuccess', is_null($error));
+            craft()->userSession->setFlash('oneCampaignMonitor_addSubscriberMessage', Craft::t($error ?: 'Success!'));
+            $this->redirectToPostedUrl();
+        }
     }
 }
