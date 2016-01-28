@@ -25,6 +25,7 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
         if (!$this->response($result, $error)) {
             throw new Exception($error);
         }
+        craft()->oneCampaignMonitor_log->subscription($listId);
         return true;
     }
 
