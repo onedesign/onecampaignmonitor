@@ -5,15 +5,15 @@ require_once CRAFT_BASE_PATH . '../vendor/campaignmonitor/createsend-php/csrest_
 
 class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseService {
 
-    public function add($list_id, $email, $name=null, $customFields=array(), $resubscribe=true) {
-        if (!$list_id) {
+    public function add($listId, $email, $name=null, $customFields=array(), $resubscribe=true) {
+        if (!$listId) {
             throw new Exception('List ID is required');
         }
         if (!$email) {
             throw new Exception('Please provide a valid email address');
         }
 
-        $connection = new \CS_REST_Subscribers($list_id, $this->auth());
+        $connection = new \CS_REST_Subscribers($listId, $this->auth());
         $result = $connection->add([
             'EmailAddress' => $email,
             'Name' => $name,
