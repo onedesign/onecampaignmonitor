@@ -48,7 +48,7 @@ The easiest way to add subscribers is by posting a form with their data. This fo
 </form>
 ```
 
-### Resposes
+### Responses
 
 If adding a subscriber fails, the call to either method below will return false, and will log the error (available in `/admin/utils/logs`).
 
