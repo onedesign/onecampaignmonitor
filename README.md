@@ -2,6 +2,34 @@
 
 Craft CMS Plugin for Campaign Monitor Integration
 
+## Installation
+
+### Composer
+
+The easiest way to install One Campaign Monitor is via [composer](https://getcomposer.org). Add the following to your `composer.json`:
+
+```
+"repositories": [
+    ...
+    {
+        "type": "git",
+        "url": "git@github.com:onedesign/onecampaignmonitor.git"
+    }
+],
+"require": {
+    ...
+    "onedesign/onecampaignmonitor": "0.1.3"
+}
+```
+
+Then, from the root of your project, run `composer install`.
+
+## Manual
+
+If you'd prefer not to install via composer, clone or download the code from this repo, and drop it into `craft/plugins/onecampaignmonitor'.
+
+You'll also need to install [campaignmonitor/createsend-php](https://github.com/campaignmonitor/createsend-php) by dropping its contents into `vendor/campaignmonitor/createsend-php'.
+
 ## Subscribing to a list
 
 Add subscriptions to a list using either a POST route, the OneCampaignMonitor service, or variable.
