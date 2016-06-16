@@ -122,6 +122,22 @@ $resubscribe = false;
 craft()->oneCampaignMonitor_subscribers->add($list_id, $email, $name, $customFields, $resubscribe);
 ```
 
+### Checking if the user has subscribed to a list
+
+You can check in a template if the current user (by session) has already subscribed to a list:
+
+```
+{% if craft.oneCampaignMonitor_log.hasSubscribed(listId) %}
+```
+
+Or elsewhere:
+
+```
+if (craft()->oneCampaignMonitor_log->hasSubscribed($listId)) { ... }
+```
+
+**Important** This log is only saved per session. It does NOT check with Campaign Monitor.
+
 ## A note on blocking calls
 
 It looks like the library this depends on, `createsend-php`, executes these CURL requests using sockets when available. (See `vendor/campaignmonitor/createsend-php/class/transport.php`.) If that's the case, then all CURL requests are performed asyncronously. Consider this a TODO to investigate and update responses.
