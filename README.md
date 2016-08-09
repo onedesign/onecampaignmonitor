@@ -24,6 +24,8 @@ The easiest way to install One Campaign Monitor is via [composer](https://getcom
 
 Then, from the root of your project, run `composer install`.
 
+If you keep your project in a git repository, you should also add `craft/plugins/onecampaignmonitor` to your `.gitignore`.
+
 ## Manual
 
 If you'd prefer not to install via composer, clone or download the code from this repo, and drop it into `craft/plugins/onecampaignmonitor'.
