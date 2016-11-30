@@ -28,7 +28,7 @@ If you keep your project in a git repository, you should also add `craft/plugins
 
 ## Manual
 
-If you'd prefer not to install via composer, clone or download the code from this repo, and drop it into `craft/plugins/onecampaignmonitor'.
+If you'd prefer not to install via composer, clone or download the code from this repo, and drop it into `craft/plugins/onecampaignmonitor`.
 
 You'll also need to install [campaignmonitor/createsend-php](https://github.com/campaignmonitor/createsend-php) by dropping its contents into `vendor/campaignmonitor/createsend-php'.
 
