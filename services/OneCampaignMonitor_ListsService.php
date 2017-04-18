@@ -6,7 +6,7 @@ require_once CRAFT_BASE_PATH . '../vendor/campaignmonitor/createsend-php/csrest_
 class OneCampaignMonitor_ListsService extends OneCampaignMonitor_BaseService {
 
     /**
-     * Ensures customer fields already exists or creates them. This also creates
+     * Ensures custom fields already exists or creates them. This also creates
      * Multi-Valued Select Many options if necessary.
      * @param  String $listId
      * @param  Array $customFields
