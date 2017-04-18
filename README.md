@@ -57,7 +57,7 @@ The easiest way to add subscribers is by posting a form with their data. This fo
   <input type="hidden" name="action" value="oneCampaignMonitor/subscribers/add" />
   <input type="hidden" name="redirect" value="/" />
 
-  <!-- required fields -->
+  <!-- required fields ** REPLACE "myListId" WITH YOUR LIST ID ** -->
   <input type="hidden" name="listId" value="myListId" />
   <label for="email">Email (required)</label>
   <input type="text" id="email" name="email" />
