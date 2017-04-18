@@ -102,32 +102,14 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
 
             $existingSubscriber = $result->response;
 
-            // Count the number of occurances of custom field to know 
-            // which is a Multi-Valued Select Many field
-            $fieldOccurances = [];
             foreach ($existingSubscriber->CustomFields as $existingField) {
-                if (array_key_exists($existingField->Key, $fieldOccurances)) {
-                    $fieldOccurances[$existingField->Key]++;
-                } else {
-                    $fieldOccurances[$existingField->Key] = 1;
-                }
+                $subscriber['CustomFields'][] = [
+                    'Key' => $existingField->Key,
+                    'Value' => $existingField->Value
+                ];
             }
-
-            // For any Multi-Valued Select Many field, make sure to append the 
-            // existing field values
-            foreach($fieldOccurances as $key => $value) {
-                if ($value > 1) {
-                    foreach($existingSubscriber->CustomFields as $existingField) {
-                        if ($existingField->Key == $key) {
-                            $subscriber['CustomFields'][] = $existingField;
-                        }
-                    }
-                }
-            }
-        } else {
-            $subscriber['CustomFields'] = $parsedCustomFields;
         }
-        
+
         $result = $connection->update($email, $subscriber);
 
         $error = null;
