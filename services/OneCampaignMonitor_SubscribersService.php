@@ -94,6 +94,12 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
 
         if ($mergeMultiFields) {
             $result = $connection->get($email);
+            
+            $error = null;
+            if (!$this->response($result, $error)) {
+                throw new Exception($error);
+            }
+
             $existingSubscriber = $result->response;
 
             // Count the number of occurances of custom field to know 
