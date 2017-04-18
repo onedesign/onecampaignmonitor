@@ -85,7 +85,7 @@ class OneCampaignMonitor_ListsService extends OneCampaignMonitor_BaseService {
             }
         }
 
-        // Add any options we haven't already added
+        // Add any options we haven't already added (field existed but not options)
         foreach ($optionsToAdd as $key => $options) {
             $result = $connection->update_field_options('['.$key.']', $options, true);
 
