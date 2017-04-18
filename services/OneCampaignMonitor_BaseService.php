@@ -18,7 +18,11 @@ class OneCampaignMonitor_BaseService extends BaseApplicationComponent {
     protected function parseCustomFields($fields) {
         $data = array();
         foreach ($fields as $key => $value) {
-            $data[] = ['Key' => $key, 'Value' => $value];
+            if (is_array($value) && array_key_exists('Key', $value) && array_key_exists('Value', $value) ) {
+                $data[] = $value;
+            } else {
+                $data[] = ['Key' => $key, 'Value' => $value];
+            }
         }
         return $data;
     }
