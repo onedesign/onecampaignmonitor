@@ -124,6 +124,17 @@ $resubscribe = false;
 craft()->oneCampaignMonitor_subscribers->add($list_id, $email, $name, $customFields, $resubscribe);
 ```
 
+Update a user in a list:
+
+```
+$list_id = '123';
+$email = 'email@email.com';
+$name = 'Steve';
+$customFields = ['city': 'New York'];
+$resubscribe = true;
+craft()->oneCampaignMonitor_subscribers->update($list_id, $email, $name, $customFields, $resubscribe);
+```
+
 ### Checking if the user has subscribed to a list
 
 You can check in a template if the current user (by session) has already subscribed to a list:
