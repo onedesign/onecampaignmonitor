@@ -40,6 +40,29 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
     }
 
     /**
+     * Determines is a subscriber exists in a list
+     * @param  $listId
+     * @param  $email
+     * @return  Boolean
+     * @throws Exception
+     */
+    public function exists($listId, $email) {
+        if (!$listId) {
+            throw new Exception('List ID is required');
+        }
+        if (!$email) {
+            throw new Exception('Please provide a valid email address');
+        }
+
+        $connection = new \CS_REST_Subscribers($listId, $this->auth());
+
+        $result = $connection->get($email);
+            
+        $error = null;
+        return $this->response($result, $error);
+    }
+
+    /**
      * Updates a subscriber in a list
      * @param  $listId
      * @param  $email
