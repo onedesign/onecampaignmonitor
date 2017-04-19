@@ -21,6 +21,7 @@ class Onecampaignmonitor_SubscribersController extends BaseController
         try {
             craft()->oneCampaignMonitor_subscribers->add($listId, $email, $name, $customFields, $resubscribe);
         } catch (Exception $e) {
+            OneCampaignMonitorPlugin::log($e->getMessage(), LogLevel::Error);
             $error = $e->getMessage();
         }
 
