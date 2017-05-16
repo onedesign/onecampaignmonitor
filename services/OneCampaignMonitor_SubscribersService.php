@@ -129,8 +129,10 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
      * @throws Exception
      */
     public function addOrUpdate($listId, $email, $name=null, $customFields=array(), $resubscribe=false, $mergeMultiFields=false) {
-        craft()->oneCampaignMonitor_lists->ensureCustomFieldsExist($listId, $customFields);
-
+        if (!empty($customFields)) {
+            craft()->oneCampaignMonitor_lists->ensureCustomFieldsExist($listId, $customFields);
+        }
+        
         if ($this->exists($listId, $email)) {
             return $this->update($listId, $email, $name, $customFields, $resubscribe, $mergeMultiFields);
         } else {
