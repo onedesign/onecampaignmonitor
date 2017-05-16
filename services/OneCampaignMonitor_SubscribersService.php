@@ -117,4 +117,26 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
             throw new Exception($error);
         }
     }
+
+    /**
+     * Adds a subscriber if they don't exist or updates them if they do
+     * @param  $listId
+     * @param  $email
+     * @param  $name
+     * @param  $customFields
+     * @param  Boolean $resubscribe Re-activate an existing user if they have been deactivated
+     * @param  Boolean $mergeMultiFields Multi-Valued Select Many fields will be merged together instead of overwritten
+     * @throws Exception
+     */
+    public function addOrUpdate($listId, $email, $name=null, $customFields=array(), $resubscribe=false, $mergeMultiFields=false) {
+        if (!empty($customFields)) {
+            craft()->oneCampaignMonitor_lists->ensureCustomFieldsExist($listId, $customFields);
+        }
+        
+        if ($this->exists($listId, $email)) {
+            return $this->update($listId, $email, $name, $customFields, $resubscribe, $mergeMultiFields);
+        } else {
+            return $this->add($listId, $email, $name, $customFields);
+        }  
+    }
 }
