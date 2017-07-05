@@ -161,6 +161,15 @@ if (craft()->oneCampaignMonitor_log->hasSubscribed($listId)) { ... }
 
 **Important** This log is only saved per session. It does NOT check with Campaign Monitor.
 
+### How to find your list ID
+
+- Find the “Lists & Subscribers” tab which should be to the right of the “Create Send” tab and click it
+- You should now see a list of one or more lists if you’ve created any
+- Click on the particular list you want to get the list ID for and you’ll be presented with a fancy chart and some email address
+- Above the fancy chart visual you’ll see the name of the list and a link that says, “(change name/type)”
+- Click on this and you’ll be taken to the edit page for this list
+- Right at the bottom of this edit screen you’ll see a heading that says, “API Subscriber List ID” and the list ID value to use for the API is beneath it
+
 ## A note on blocking calls
 
 It looks like the library this depends on, `createsend-php`, executes these CURL requests using sockets when available. (See `vendor/campaignmonitor/createsend-php/class/transport.php`.) If that's the case, then all CURL requests are performed asyncronously. Consider this a TODO to investigate and update responses.
