@@ -43,6 +43,7 @@ Adding subscriptions requires a List ID and an email, but there are a few other 
 * name
 * array of custom fields (eg `{age: 22}`)
 * boolean for whether to resubscribe addresses that have previously been removed (default true)
+* whether the subscriber has given permission to have their email opens and clicks tracked. Values: 'Yes', 'No' or 'Unchanged' (default)
 
 Note about the **list ID**: this is _not_ the parameter "listID" in the URL when viewing a list. Annoyingly, Campaign Monitor uses two IDs for lists. To find your List ID, view [this FAQ](https://createform.com/support/campaignmonitor-list).
 
@@ -64,6 +65,8 @@ The easiest way to add subscribers is by posting a form with their data. This fo
 
   <!-- optional fields -->
   <input type="hidden" name="resubscribe" value="0" /><!-- don't resubscribe if email has already opted out -->
+
+  <input type="hidden" name="consenttotrack" value="yes" /><!-- Tracking is permitted for this email address -->
 
   <label for="name">Name</label>
   <input type="text" id="name" name="name" />
@@ -100,7 +103,8 @@ Add additional parameters as needed:
 {% set name = 'Steve' %}
 {% set customFields = {age: 22, city: 'Chicago'} %}
 {% set resubscribe = false %}
-{% craft.oneCampaignMonitor.subscribe(listId, email, name, customFields, resubscribe) %}
+{% set consenttotrack = 'Yes' %}
+{% craft.oneCampaignMonitor.subscribe(listId, email, name, customFields, resubscribe, consenttotrack) %}
 ```
 
 ### Service (in controllers, etc)
