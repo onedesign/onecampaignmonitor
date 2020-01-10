@@ -8,6 +8,17 @@ class Onecampaignmonitor_SubscribersController extends BaseController
     public function actionAdd() {
         $this->requirePostRequest();
 
+        // Verify the recaptcha response before creating the user
+        if (craft()->plugins->getPlugin('OneCampaignMonitor')->getSettings()->verify_recaptcha) {
+            $response = craft()->request->getParam('recaptchaResult');
+            $result = craft()->fieldNotes_recaptcha->verify($response);
+            if (!$result['success']) {
+                $this->returnJson(['success' => false,
+                                   'error' => 'Recaptcha Not Successful']);
+                return;
+            }
+        }
+
         //required fields
         $listId = craft()->request->getParam('listId');
         $email  = craft()->request->getParam('email');

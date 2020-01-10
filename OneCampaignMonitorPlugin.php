@@ -31,7 +31,8 @@ class OneCampaignMonitorPlugin extends BasePlugin {
 
     protected function defineSettings() {
         return array(
-            'campaignmonitor_api_key' => array(AttributeType::String)
+            'campaignmonitor_api_key' => array(AttributeType::String),
+            'verify_recaptcha' => array(AttributeType::Bool, 'default' => false),
         );
     }
 

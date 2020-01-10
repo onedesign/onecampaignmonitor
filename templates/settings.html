@@ -11,3 +11,15 @@
         <input class="text fullwidth" type="text" id="campaignmonitor_api_key" name="campaignmonitor_api_key" value="{{ settings.campaignmonitor_api_key }}" />
     </div>
 </div>
+
+<div class="field">
+    <div class="heading">
+        <label for="verify_recaptcha" class="required">Verify Recaptcha</label>
+        <div class="instructions">
+            <p>If enabled, will only allow allow subcribers to be added if they have completed a recaptcha (this requires the FieldNotes plugin so it should probably be kept off)</p>
+        </div>
+    </div>
+    <div class="input">
+        <input type="checkbox" id="verify_recaptcha" name="verify_recaptcha" value="{{ settings.verify_recaptcha}}">Verify Recaptcha<br>
+    </div>
+</div>
