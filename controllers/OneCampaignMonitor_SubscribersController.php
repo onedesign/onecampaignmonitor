@@ -11,7 +11,7 @@ class Onecampaignmonitor_SubscribersController extends BaseController
         // Verify the recaptcha response before creating the user
         if (craft()->plugins->getPlugin('OneCampaignMonitor')->getSettings()->verify_recaptcha) {
             $response = craft()->request->getParam('recaptchaResult');
-            $result = craft()->fieldNotes_recaptcha->verify($response);
+            $result = craft()->oneCampaignMonitor_recaptcha->verify($response);
             if (!$result['success']) {
                 $this->returnJson(['success' => false,
                                    'error' => 'Recaptcha Not Successful']);
