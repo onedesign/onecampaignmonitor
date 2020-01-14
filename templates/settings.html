@@ -22,7 +22,7 @@
     </div>
     {{ forms.checkboxField({
         label: "Verify Recaptcha"|t,
-        name: 'settings[verify_recaptcha]',
+        name: 'verify_recaptcha',
         checked: (settings.verify_recaptcha ? settings.verify_recaptcha : false),
         toggle: 'verify_recaptcha'
     }) }}
