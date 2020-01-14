@@ -161,6 +161,10 @@ if (craft()->oneCampaignMonitor_log->hasSubscribed($listId)) { ... }
 
 **Important** This log is only saved per session. It does NOT check with Campaign Monitor.
 
+### Recaptcha Validation
+
+There is an option to validate a Google Recaptcha parameter by adding a Google Recaptcha Secret Key to the plugin settings. When the Add Subscribers action is called, it will look for a param `g-recaptcha-result` which will be validated against that Recaptcha Secret key. If it fails, the subscriber will not be added.
+
 ## A note on blocking calls
 
 It looks like the library this depends on, `createsend-php`, executes these CURL requests using sockets when available. (See `vendor/campaignmonitor/createsend-php/class/transport.php`.) If that's the case, then all CURL requests are performed asyncronously. Consider this a TODO to investigate and update responses.
