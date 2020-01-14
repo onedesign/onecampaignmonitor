@@ -1,3 +1,4 @@
+{% import "_includes/forms" as forms %}
 <h3>One Campaign Monitor Settings</h3>
 
 <div class="field">
@@ -16,12 +17,15 @@
     <div class="heading">
         <label for="verify_recaptcha" class="required">Verify Recaptcha</label>
         <div class="instructions">
-            <p>If enabled, a recaptcha parameter (recaptchaResult) must be included in the subscribers/add action, which will then be validated before a subscriber can be added.</p>
+            <p>If enabled, a recaptcha parameter must be included in the subscribers/add action, which will then be validated before a subscriber can be added.</p>
         </div>
     </div>
-    <div class="input">
-        <input type="checkbox" id="verify_recaptcha" name="verify_recaptcha" value="{{ settings.verify_recaptcha}}">Verify Recaptcha<br>
-    </div>
+    {{ forms.checkboxField({
+        label: "Verify Recaptcha"|t,
+        name: 'settings[verify_recaptcha]',
+        checked: (settings.verify_recaptcha ? settings.verify_recaptcha : false),
+        toggle: 'verify_recaptcha'
+    }) }}
 </div>
 
 <div class="field">
