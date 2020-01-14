@@ -3,7 +3,7 @@ namespace Craft;
 
 class OneCampaignMonitor_RecaptchaService extends BaseApplicationComponent {
   public function verify($response) {
-    $secret = craft()->plugins->getPlugin('OneCampaignMonitor')->getSettings()->google_recaptcha_secret_key
+    $secret = craft()->plugins->getPlugin('OneCampaignMonitor')->getSettings()->google_recaptcha_secret_key;
 
     $url = 'https://www.google.com/recaptcha/api/siteverify';
     $fields = array('secret' => $secret, 'response' => $response);
