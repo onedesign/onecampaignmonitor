@@ -163,7 +163,7 @@ if (craft()->oneCampaignMonitor_log->hasSubscribed($listId)) { ... }
 
 ### Recaptcha Validation
 
-There is an option to validate a Google Recaptcha parameter by adding a Google Recaptcha Secret Key to the plugin settings. When the Add Subscribers action is called, it will look for a param `g-recaptcha-response` which will be validated against that Recaptcha Secret key. If it fails, the subscriber will not be added.
+There is an option to validate a Google Recaptcha parameter by adding a Google Recaptcha Secret Key to the plugin settings. When the Add Subscribers action is called, it will look for a param `g-recaptcha-result` which will be validated against that Recaptcha Secret key. If it fails, the subscriber will not be added.
 
 ## A note on blocking calls
 
