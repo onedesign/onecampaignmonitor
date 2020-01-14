@@ -14,21 +14,9 @@
 
 <div class="field">
     <div class="heading">
-        <label for="verify_recaptcha" class="required">Verify Recaptcha</label>
-        <div class="instructions">
-            <p>If enabled, a recaptcha parameter (recaptchaResult) must be included in the subscribers/add action, which will then be validated before a subscriber can be added.</p>
-        </div>
-    </div>
-    <div class="input">
-        <input type="checkbox" id="verify_recaptcha" name="verify_recaptcha" value="{{ settings.verify_recaptcha}}">Verify Recaptcha<br>
-    </div>
-</div>
-
-<div class="field">
-    <div class="heading">
         <label for="google_recaptcha_secret_key" class="required">Google Recaptcha Secret Key</label>
         <div class="instructions">
-            <p>This is the value for the Google Recaptcha secret key.</p>
+            <p>This is the value for the Google Recaptcha secret key. If added, a recaptcha parameter (g-recaptcha-result) must be included in the subscribers/add action, which will then be validated before a subscriber can be added.</p>
         </div>
     </div>
     <div class="input">
