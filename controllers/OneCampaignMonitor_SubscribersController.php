@@ -26,10 +26,11 @@ class Onecampaignmonitor_SubscribersController extends BaseController
         $name   = craft()->request->getParam('name') ?: '';
         $customFields = craft()->request->getParam('customFields') ?: array();
         $resubscribe = craft()->request->getParam('resubscribe') ?: true;
+        $consenttotrack = craft()->request->getParam('consenttotrack') ?: 'Unchanged';
 
         $error = null;
         try {
-            craft()->oneCampaignMonitor_subscribers->add($listId, $email, $name, $customFields, $resubscribe);
+            craft()->oneCampaignMonitor_subscribers->add($listId, $email, $name, $customFields, $resubscribe, $consenttotrack);
         } catch (Exception $e) {
             OneCampaignMonitorPlugin::log($e->getMessage(), LogLevel::Error);
             $error = $e->getMessage();

@@ -15,7 +15,7 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
      * @param  $merge
      * @throws Exception
      */
-    public function add($listId, $email, $name=null, $customFields=array(), $resubscribe=true) {
+    public function add($listId, $email, $name=null, $customFields=array(), $resubscribe=true, $consenttotrack='Unchanged') {
         if (!$listId) {
             throw new Exception('List ID is required');
         }
@@ -28,7 +28,8 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
             'EmailAddress' => $email,
             'Name' => $name,
             'CustomFields' => $this->parseCustomFields($customFields),
-            'Resubscribe' => $resubscribe
+            'Resubscribe' => $resubscribe,
+            'ConsentToTrack' => $consenttotrack
         ]);
 
         $error = null;
@@ -57,7 +58,7 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
         $connection = new \CS_REST_Subscribers($listId, $this->auth());
 
         $result = $connection->get($email);
-            
+
         $error = null;
         return $this->response($result, $error);
     }
@@ -81,7 +82,7 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
         }
 
         $connection = new \CS_REST_Subscribers($listId, $this->auth());
-        
+
         $subscriber = [
             'Resubscribe' => $resubscribe
         ];
@@ -94,7 +95,7 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
 
         if ($mergeMultiFields) {
             $result = $connection->get($email);
-            
+
             $error = null;
             if (!$this->response($result, $error)) {
                 throw new Exception($error);
@@ -132,11 +133,11 @@ class OneCampaignMonitor_SubscribersService extends OneCampaignMonitor_BaseServi
         if (!empty($customFields)) {
             craft()->oneCampaignMonitor_lists->ensureCustomFieldsExist($listId, $customFields);
         }
-        
+
         if ($this->exists($listId, $email)) {
             return $this->update($listId, $email, $name, $customFields, $resubscribe, $mergeMultiFields);
         } else {
             return $this->add($listId, $email, $name, $customFields);
-        }  
+        }
     }
 }
