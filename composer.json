@@ -1,23 +1,46 @@
 {
-    "name": "onedesign/onecampaignmonitor",
-    "description": "A Craft CMS plugin for integrating Craft with CampaignMonitor",
-    "homepage": "https://github.com/onedesign/onecampaignmonitor",
+    "name": "onedesign/one-campaign-monitor",
+    "description": "Craft CMS Plugin for Campaign Monitor Integration",
     "type": "craft-plugin",
-    "keywords": ["craft","plugin"],
-    "license": "MIT",
-    "authors": [{
-        "name": "One Design Company",
-        "email": "dev+onecampaignmonitor@onedesigncompany.com",
-        "homepage": "https://onedesigncompany.com"
-    }],
-    "autoload": {
-        "classmap": [
-            "controllers",
-            "services"
-        ]
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "one-campaign-monitor"
+    ],
+    "support": {
+        "docs": "https://github.com/onedesign/one-campaign-monitor/blob/master/README.md",
+        "issues": "https://github.com/onedesign/one-campaign-monitor/issues"
     },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Michael Ramuta",
+            "homepage": "https://github.com/onedesign"
+        }
+    ],
     "require": {
-        "composer/installers": "~1.0",
+        "craftcms/cms": "^3.0.0-RC1",
         "campaignmonitor/createsend-php": "5.0.1"
+    },
+    "autoload": {
+        "psr-4": {
+          "onedesign\\onecampaignmonitor\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "one-campaign-monitor",
+        "handle": "one-campaign-monitor",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/onedesign/one-campaign-monitor/master/CHANGELOG.md",
+        "components": {
+            "recaptcha": "onedesign\\onecampaignmonitor\\services\\Recaptcha",
+            "base": "onedesign\\onecampaignmonitor\\services\\Base",
+            "subscribers": "onedesign\\onecampaignmonitor\\services\\Subscribers"
+        },
+        "class": "onedesign\\onecampaignmonitor\\Onecampaignmonitor"
     }
 }
