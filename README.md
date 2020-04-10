@@ -12,13 +12,13 @@ The easiest way to install One Campaign Monitor is via [composer](https://getcom
 "repositories": [
     ...
     {
-        "type": "git",
-        "url": "git@github.com:onedesign/onecampaignmonitor.git"
+        "type": "vcs",
+      	"url": "https://github.com/onedesign/onecampaignmonitor.git"
     }
 ],
 "require": {
     ...
-    "onedesign/onecampaignmonitor": "0.1.3"
+    "onedesign/onecampaignmonitor": "dev-feature/craft-3",
 }
 ```
 
